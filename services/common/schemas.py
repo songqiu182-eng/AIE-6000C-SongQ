@@ -16,6 +16,8 @@ class CaseCreate(BaseModel):
     title: str = Field(min_length=3, max_length=200)
     description: str = Field(min_length=5, max_length=4000)
 
+    model_config = ConfigDict(str_strip_whitespace=True)
+
 
 class CaseRead(BaseModel):
     id: str

@@ -37,3 +37,26 @@ def test_create_and_read_case_and_job(client):
     job_response = client.get(f"/jobs/{job_id}")
     assert job_response.status_code == 200
     assert job_response.json()["case_id"] == case_id
+
+
+def test_create_case_rejects_blank_fields(client):
+    for payload in [
+        {"title": "   ", "description": "A valid description"},
+        {"title": "A valid title", "description": "     "},
+    ]:
+        response = client.post("/cases", json=payload)
+        assert response.status_code == 422
+
+
+def test_create_case_normalizes_surrounding_whitespace(client):
+    response = client.post(
+        "/cases",
+        json={
+            "title": "  Cannot login  ",
+            "description": "  Password reset did not restore access.  ",
+        },
+    )
+
+    assert response.status_code == 201
+    assert response.json()["case"]["title"] == "Cannot login"
+    assert response.json()["case"]["description"] == "Password reset did not restore access."
