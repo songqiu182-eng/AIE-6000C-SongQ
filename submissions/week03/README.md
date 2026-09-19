@@ -47,11 +47,11 @@ available for reproducible container-based verification.
 
 ## 5. AI Use Statement
 
-OpenAI Codex was used to interpret the Week 3 lab instructions, inspect the starter repository,
-identify the whitespace-validation issue, implement the bounded change and tests, and run the
-documented verification commands. The resulting behavior was checked through automated tests,
-live HTTP requests, database queries, and service logs. No AI-generated result was accepted
-without repository-based or runtime verification.
+I used OpenAI Codex to assist with interpreting the Week 3 lab requirements, inspecting the
+starter repository, refining the scope of the whitespace-validation change, and preparing the
+code and tests. I reviewed the selected change and its verification evidence before finalizing
+the submission. The behavior was verified through automated tests, live HTTP requests, database
+queries, and service logs. Cursor was also used to review the repository and verify the submission.
 
 ## 6. Baseline evidence note
 
